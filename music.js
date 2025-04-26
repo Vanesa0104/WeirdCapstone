@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
 
             // Unmute and play the music
             music.muted = false;
-            music.volume = 0.16; // Set the volume level
+            music.volume = 0.8; // Set the volume level
             music.play().catch((e) => {
                 console.error("Autoplay still blocked:", e);
             });
@@ -27,7 +27,7 @@ window.addEventListener("load", () => {
     });
 
     // Set initial volume for the music (it will be adjusted on unmute)
-    music.volume = 0.2;
+    music.volume = 0.8;
 });
 
 
@@ -37,7 +37,7 @@ window.addEventListener("load", () => {
   
     unmuteButton.addEventListener("click", () => {
       bells.muted = false;
-      bells.volume = 0.15;
+      bells.volume = 0.6;
       bells.play();
     });
   });
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     button.addEventListener("click", () => {
       sound.currentTime = 0;
-      sound.volume = 0.3;
+      sound.volume = 0.6;
       sound.play();
     });
   });
