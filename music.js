@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
 
             // Unmute and play the music
             music.muted = false;
-            music.volume = 0.16; // Set the volume level
+            music.volume = 0.8; // Set the volume level
             music.play().catch((e) => {
                 console.error("Autoplay still blocked:", e);
             });
