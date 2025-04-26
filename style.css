@@ -258,6 +258,15 @@ text-shadow: 0 0 5px #ff6666, 0 0 10px #ff3333;
         text-shadow: 2px 0 rgb(255, 0, 208), -2px 0 cyan;
     }
 }
+
+#hiddenImage {
+opacity: 0;
+transition: opacity 0.5s ease-in-out;
+}
+
+#hiddenImage[style*="display: block"] {
+opacity: 1;
+}
   
 
 /* Container behind the main content */
