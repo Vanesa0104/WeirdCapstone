@@ -1,42 +1,89 @@
-window.addEventListener("load", () => {
-    // once the page is loaded, what will happen?
-    const content = document.getElementById("content"); 
-    const unmuteButton = document.getElementById("unmuteButton");
-    const bgMusic = document.getElementById("bg-music");   
-    content.style.display = "none";
+// window.addEventListener("load", () => {
+//     // once the page is loaded, what will happen?
+//     const content = document.getElementById("content"); 
+//     const unmuteButton = document.getElementById("unmuteButton");
+//     const bgMusic = document.getElementById("bg-music");   
+//     content.style.display = "none";
     
+//     // Must click unmute to proceed
+//     unmuteButton.addEventListener("click", () => {
+//       content.style.display = "block";
+//       unmuteButton.style.display = "none";
+//       setTimeout(() => {
+//         content.classList.add("visible");
+//       }, 50);
+//     }, { once: true });
+
+//       revealTrigger.addEventListener("click", (e) => {
+//         e.stopPropagation();
+//         hiddenMessage.classList.add("revealed");
+
+//         hiddenMessage1.classList.add("revealed");
+
+//         hiddenMessage2.classList.add("revealed");
+
+//         hiddenImage.style.display = "block";
+
+//         revealTrigger.classList.remove("clickable");
+//     }); 
+
+    
+//     document.getElementById("revealButton").addEventListener("click", () => {
+//         const image = document.getElementById("hiddenImage");
+//         image.style.display = "block";
+//     });
+      
+
+// });
+
+window.addEventListener("load", () => {
+    // Once the page is loaded, what will happen?
+    const content = document.getElementById("content");
+    const unmuteButton = document.getElementById("unmuteButton");
+    const bgMusic = document.getElementById("bg-music");
+    const revealTrigger = document.getElementById("revealTrigger"); // Assuming this is declared elsewhere
+    const hiddenMessage = document.getElementById("hiddenMessage"); // Assuming this is declared elsewhere
+    const hiddenMessage1 = document.getElementById("hiddenMessage1"); // Assuming this is declared elsewhere
+    const hiddenMessage2 = document.getElementById("hiddenMessage2"); // Assuming this is declared elsewhere
+    const hiddenImage = document.getElementById("hiddenImage"); // Assuming this is declared elsewhere
+    const revealButton = document.getElementById("revealButton"); // Assuming this is declared elsewhere
+
+    // Ensure the content is initially hidden
+    content.style.display = "none"; 
+
+    // Show the unmute button as soon as the page loads
+    unmuteButton.style.display = "block"; 
+
     // Must click unmute to proceed
     unmuteButton.addEventListener("click", () => {
-      content.style.display = "block";
-      unmuteButton.style.display = "none";
-      setTimeout(() => {
-        content.classList.add("visible");
-      }, 50);
+        content.style.display = "block"; // Show content when unmute is clicked
+        unmuteButton.style.display = "none"; // Hide unmute button after it's clicked
+        bgMusic.muted = false; // Unmute background music
+        setTimeout(() => {
+            content.classList.add("visible");
+        }, 50);
     }, { once: true });
 
-      revealTrigger.addEventListener("click", (e) => {
-        e.stopPropagation();
+    // Event listener for reveal trigger
+    revealTrigger.addEventListener("click", (e) => {
+        e.stopPropagation(); // Stop event propagation
         hiddenMessage.classList.add("revealed");
-
         hiddenMessage1.classList.add("revealed");
-
         hiddenMessage2.classList.add("revealed");
+        hiddenImage.style.display = "block"; // Reveal the hidden image
+        revealTrigger.classList.remove("clickable"); // Disable further clicking on the reveal trigger
+    });
 
-        hiddenImage.style.display = "block";
+    // Event listener for the reveal button
+    revealButton.addEventListener("click", () => {
+        hiddenImage.style.display = "block"; // Show the hidden image
+    });
 
-        revealTrigger.classList.remove("clickable");
-    }); 
-
-    
     document.getElementById("revealButton").addEventListener("click", () => {
         const image = document.getElementById("hiddenImage");
         image.style.display = "block";
     });
-      
-
 });
-
-
 
 
 document.addEventListener("DOMContentLoaded", () => {
