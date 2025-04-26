@@ -5,37 +5,31 @@ window.addEventListener("load", () => {
     // Create an AudioContext for controlling audio playback
     const context = new (window.AudioContext || window.webkitAudioContext)();
 
-    // Don't attempt autoplay for the music; only play on user interaction
-    unmuteButton.style.display = "block"; // Make sure the unmute button is visible
+    // Ensure that the unmute button is visible, and music is initially muted
+    unmuteButton.style.display = "block";
+    music.muted = true;  // Start the music as muted
 
-    // Unmute the music and resume playback when the user clicks the unmute button
+    // Handle unmute button click to start the audio playback
     unmuteButton.addEventListener("click", () => {
         context.resume().then(() => {
             console.log("AudioContext resumed and playback started");
 
+            // Unmute and play the music
             music.muted = false;
-            music.volume = 0.16;
+            music.volume = 0.16; // Set the volume level
             music.play().catch((e) => {
                 console.error("Autoplay still blocked:", e);
             });
 
-            // Store the fact that the music is unmuted in localStorage
-            localStorage.setItem("musicUnmuted", "true");
+            // Hide the unmute button after it's clicked
+            unmuteButton.style.display = "none";
         });
     });
 
-    // Check if the user has previously unmuted the music
-    const hasUnmutedBefore = localStorage.getItem("musicUnmuted") === "true";
-
-    if (hasUnmutedBefore) {
-        // If the music was previously unmuted, start playing it automatically
-        music.muted = false;
-        music.volume = 0.16;
-    }
-
-    // Set initial volume for the music
+    // Set initial volume for the music (it will be adjusted on unmute)
     music.volume = 0.2;
 });
+
 
 window.addEventListener("load", () => {
     const bells = document.getElementById("bg-bells");
