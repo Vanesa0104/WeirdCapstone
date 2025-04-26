@@ -7,6 +7,7 @@ My capstone project is an interactive, narrative-driven experience that immerses
 ## 📓 Features
 - Two diverging archetypes and thier unique narratives.
   -  The detective is more immersive, riddled with subtle triggers that users must find to continue on with the story
+    -  Hint: Perhaps they must be uncovered in a certain order...   
   -  The entity employs more storytelling techniques, the triggers aren't nessecary to unveil but recommended as they make the story more immersive. Hidden ending.    
 - Atmospheric visuals and audio design (headphones *highly* recommended)  
 - Interactive elements and hidden triggers that reward exploration  
