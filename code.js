@@ -35,6 +35,54 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// window.addEventListener("load", () => {
+//     // once the page is loaded, what will happen?
+//     const content = document.getElementById("content"); 
+//     const unmuteButton = document.getElementById("unmuteButton");
+//     const bgMusic = document.getElementById("bg-music");   
+//     content.style.display = "none";
+    
+//     // Must click unmute to proceed
+//     unmuteButton.addEventListener("click", () => {
+//       content.style.display = "block";
+//       unmuteButton.style.display = "none";
+//       setTimeout(() => {
+//         content.classList.add("visible");
+//       }, 50);
+//     }, { once: true });
+
+//       revealTrigger.addEventListener("click", (e) => {
+//         e.stopPropagation();
+//         hiddenMessage.classList.add("revealed");
+
+//         hiddenMessage1.classList.add("revealed");
+
+//         hiddenMessage2.classList.add("revealed");
+
+//         hiddenImage.style.display = "block";
+
+//         revealTrigger.classList.remove("clickable");
+//     }); 
+
+    
+//     document.getElementById("revealButton").addEventListener("click", () => {
+//         const image = document.getElementById("hiddenImage");
+//         image.style.display = "block";
+//     });
+// });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const revealTrigger = document.getElementById("revealTrigger");
+    const hiddenImage = document.getElementById("hiddenImage");
+
+    if (revealTrigger && hiddenImage) {
+            revealTrigger.addEventListener("click", () => {
+            hiddenImage.style.display = "block";
+            revealTrigger.classList.remove("clickable");
+        });
+    }
+});
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const hoverTriggers = document.querySelectorAll(".hover-trigger");
@@ -88,6 +136,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const revealTrigger = document.getElementById("revealTrigger");
+    const hiddenImage = document.getElementById("hiddenImage");
+
+    if (revealTrigger && hiddenImage) {
+        revealTrigger.addEventListener("mouseenter", () => {
+        hiddenImage.style.display = "block";
+        revealTrigger.classList.add("revealed");
+        });
+    }
+});
+  
 
 document.addEventListener("DOMContentLoaded", () => {
     const hoverTriggers = document.querySelectorAll(".hover-trigger");
