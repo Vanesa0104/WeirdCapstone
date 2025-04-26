@@ -5,27 +5,22 @@ window.addEventListener("load", () => {
     // Create an AudioContext for controlling audio playback
     const context = new (window.AudioContext || window.webkitAudioContext)();
 
-    // Try to autoplay music
-    music.play().catch((err) => {
-        console.warn("Autoplay blocked, waiting for user interaction...", err);
+    // Don't attempt autoplay for the music; only play on user interaction
+    unmuteButton.style.display = "block"; // Make sure the unmute button is visible
 
-        // Show the unmute button if autoplay is blocked
-        unmuteButton.style.display = "block";
+    // Unmute the music and resume playback when the user clicks the unmute button
+    unmuteButton.addEventListener("click", () => {
+        context.resume().then(() => {
+            console.log("AudioContext resumed and playback started");
 
-        // Unmute the music and resume playback when the user clicks the button
-        unmuteButton.addEventListener("click", () => {
-            context.resume().then(() => {
-                console.log("AudioContext resumed and playback started");
-
-                music.muted = false;
-                music.volume = 0.16;
-                music.play().catch((e) => {
-                    console.error("Autoplay still blocked:", e);
-                });
-
-                // Store the fact that the music is unmuted in localStorage
-                localStorage.setItem("musicUnmuted", "true");
+            music.muted = false;
+            music.volume = 0.16;
+            music.play().catch((e) => {
+                console.error("Autoplay still blocked:", e);
             });
+
+            // Store the fact that the music is unmuted in localStorage
+            localStorage.setItem("musicUnmuted", "true");
         });
     });
 
@@ -36,9 +31,6 @@ window.addEventListener("load", () => {
         // If the music was previously unmuted, start playing it automatically
         music.muted = false;
         music.volume = 0.16;
-        music.play().catch((err) => {
-            console.warn("Autoplay blocked even though user had unmuted:", err);
-        });
     }
 
     // Set initial volume for the music
